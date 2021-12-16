@@ -1,2 +1,2 @@
-# OpenCV
+# OpenCV learning codes
  
