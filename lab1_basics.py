@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+
 def main():
     #IMAGE READ
     img = cv.imread(cv.samples.findFile("AdditiveColor.png"), cv.IMREAD_REDUCED_COLOR_2)
