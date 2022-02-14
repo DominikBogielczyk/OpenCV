@@ -1,10 +1,8 @@
 import cv2
-import sys
-import numpy as np
-import matplotlib.pyplot as plt
+
 
 def main():
-    images = ["AdditiveColor.png", "funny_image.png","logo.png","qr.jpg"]
+    images = ["AdditiveColor.png", "funny_image.png", "logo.png", "qr.jpg"]
     i = 0
     img = cv2.imread(cv2.samples.findFile(images[i]), cv2.IMREAD_COLOR)
     img1 = cv2.resize(img, (0, 0), fx=512 / img.shape[0], fy=512 / img.shape[1], interpolation=cv2.INTER_LINEAR)

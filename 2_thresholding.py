@@ -1,5 +1,5 @@
 import cv2
-import numpy as np
+
 
 def empty_callback(value):
     print(f'Trackbar reporting for duty with value: {value}')
@@ -7,7 +7,7 @@ def empty_callback(value):
 
 cv2.namedWindow('image')
 
-img = cv2.imread(cv2.samples.findFile("boss.png"), cv2.IMREAD_REDUCED_GRAYSCALE_2)
+img = cv2.imread(cv2.samples.findFile("funny_image.png"), cv2.IMREAD_REDUCED_GRAYSCALE_2)
 
 cv2.createTrackbar('Threshold', 'image', 0, 255, empty_callback)
 cv2.createTrackbar('Type', 'image', 0, 4, empty_callback)

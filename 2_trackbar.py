@@ -5,6 +5,7 @@ import numpy as np
 def empty_callback(value):
     print(f'Trackbar reporting for duty with value: {value}')
 
+
 # create a black image, a window
 img = np.zeros((300, 512, 3), dtype=np.uint8)
 cv2.namedWindow('image')

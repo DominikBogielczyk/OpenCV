@@ -7,6 +7,7 @@ img2 = cv2.resize(img, (0, 0), fx=2.75, fy=2.75, interpolation=cv2.INTER_NEAREST
 img3 = cv2.resize(img, (0, 0), fx=2.75, fy=2.75, interpolation=cv2.INTER_AREA)
 img4 = cv2.resize(img, (0, 0), fx=2.75, fy=2.75, interpolation=cv2.INTER_LANCZOS4)
 
+
 def main():
     while True:
         key_code = cv2.waitKey(10)
@@ -25,6 +26,7 @@ def main():
 
         print(f'INTER_LINEAR:  {(t2 - t1)*1000:.2f}ms, ', f'INTER_NEAREST:  {(t3 - t2)*1000:.2f}ms, ',
               f'INTER_AREA:  {(t4 - t3)*1000:.2f}ms, ', f'INTER_LACZNOS4:  {(t5 - t4)*1000:.2f}ms')
+
 
 if __name__ == '__main__':
     main()

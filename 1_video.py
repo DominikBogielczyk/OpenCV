@@ -6,11 +6,11 @@ def main():
     key = ord('a')
 
     while key != ord('q'):
-        # Capture frame-by-frame
 
+        # Capture frame-by-frame
         ret, frame = cap.read()
 
-        if ret != False:
+        if ret:
             img = cv.cvtColor(frame, cv.COLOR_BGR2BGRA)
 
         else:
@@ -21,7 +21,7 @@ def main():
         cv.imshow('Funny lama', img)
 
         # Wait for a space or 'q' press - new frame
-        key  = cv.waitKey(0)
+        key = cv.waitKey(0)
 
         while key != ord(' ') and key != ord('q'):
             pass
