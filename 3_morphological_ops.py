@@ -1,8 +1,15 @@
 import cv2
 
 
-def empty_callback(value):
-    print(f'Trackbar reporting for duty with value: {value}')
+def callback(value):
+    erosion = cv2.erode(thresh, (5, 5), iterations=1)
+    cv2.imshow("After erosion", erosion)
+
+    dilation = cv2.dilate(thresh, (5, 5), iterations=1)
+    cv2.imshow("After dilation", dilation)
+
+    closing = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, (5, 5))
+    cv2.imshow("Closing", closing)
 
 
 cv2.namedWindow('Input image')
@@ -14,7 +21,7 @@ cv2.namedWindow("Closing")
 cv2.moveWindow("Closing", 1200, 0)
 img = cv2.imread(cv2.samples.findFile("funny_image.png"), cv2.IMREAD_REDUCED_GRAYSCALE_2)
 
-cv2.createTrackbar('Threshold', 'Input image', 0, 255, empty_callback)
+cv2.createTrackbar('Threshold', 'Input image', 0, 255, callback)
 
 while True:
     # sleep for 10 ms waiting for user to press some key, return -1 on timeout
@@ -27,14 +34,6 @@ while True:
     ret, thresh = cv2.threshold(img, thr, 255, cv2.THRESH_BINARY)
     cv2.imshow('Input image', thresh)
 
-    erosion = cv2.erode(thresh, (5, 5), iterations=1)
-    cv2.imshow("After erosion", erosion)
-
-    dilation = cv2.dilate(thresh, (5, 5), iterations=1)
-    cv2.imshow("After dilation", dilation)
-
-    closing = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, (5, 5))
-    cv2.imshow("Closing", closing)
 
 # closes all windows (usually optional as the script ends anyway)
 cv2.destroyAllWindows()
