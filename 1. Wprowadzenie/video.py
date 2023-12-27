@@ -1,7 +1,14 @@
 import cv2 as cv
+import os
+import sys
+
 
 def main():
-    cap = cv.VideoCapture("lama.mp4")  # open video
+    # current path
+    path = os.getcwd()
+    # to parent dir and then /video
+    file = os.path.dirname(path) + "/video/Wildlife.mp4"
+    cap = cv.VideoCapture(file)  # open video
 
     key = ord('a')
 
@@ -12,15 +19,17 @@ def main():
 
         if ret:
             img = cv.cvtColor(frame, cv.COLOR_BGR2BGRA)
+            if img is None:
+                sys.exit("Could not read the image.")
 
         else:
             print('End of video')
             cap.set(cv.CAP_PROP_POS_FRAMES, 0)
 
         # Display the resulting frame
-        cv.imshow('Funny lama', img)
+        cv.imshow('Wildlife video', img)
 
-        # Wait for a space or 'q' press - new frame
+        # Wait for a key press, SPACE to open new frame, 'q' to quit
         key = cv.waitKey(0)
 
         while key != ord(' ') and key != ord('q'):

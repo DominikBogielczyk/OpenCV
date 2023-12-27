@@ -1,11 +1,13 @@
 import cv2
 
 
-def callback(value):
-    n = value
+img = cv2.imread("../images/lenna_noise.bmp")
+
+
+def callback(n):
     # n have to be odd
-    if value % 2 == 0:
-        n = value + 1
+    if n % 2 == 0:
+        n += 1
 
     aver = cv2.blur(img, (n, n))
     cv2.imshow("Averaging filter", aver)
@@ -17,20 +19,20 @@ def callback(value):
     cv2.imshow("Median filter", median)
 
 
-cv2.namedWindow("Input image")
 cv2.namedWindow("Averaging filter")
 cv2.moveWindow("Averaging filter", 500, 0)
 cv2.namedWindow("Gaussian filter")
 cv2.moveWindow("Gaussian filter", 1000, 0)
 cv2.namedWindow("Median filter")
-cv2.moveWindow("Median filter", 0, 500)
+cv2.moveWindow("Median filter", 500, 400)
 
+cv2.namedWindow("Input image")
+cv2.moveWindow("Input image", 0, 0)
+cv2.imshow("Input image", img)
 cv2.createTrackbar('Filter size', 'Input image', 1, 10, callback)
 
-while True:
-    img = cv2.imread("images/lenna_salt_and_pepper.bmp")
-    cv2.imshow("Input image", img)
 
+while True:
     key_code = cv2.waitKey(10)
     if key_code == 27:
         # escape key
@@ -39,5 +41,4 @@ while True:
     cv2.getTrackbarPos("Filter size", "Input image")
 
 
-cv2.waitKey(0)
 cv2.destroyAllWindows()

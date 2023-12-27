@@ -12,15 +12,15 @@ def callback(value):
     cv2.imshow("Closing", closing)
 
 
-cv2.namedWindow('Input image')
 cv2.namedWindow("After erosion")
 cv2.moveWindow("After erosion", 600, 0)
 cv2.namedWindow("After dilation")
 cv2.moveWindow("After dilation", 0, 500)
 cv2.namedWindow("Closing")
 cv2.moveWindow("Closing", 1200, 0)
-img = cv2.imread(cv2.samples.findFile("funny_image.png"), cv2.IMREAD_REDUCED_GRAYSCALE_2)
+img = cv2.imread("../images/funny_image.png", cv2.IMREAD_REDUCED_GRAYSCALE_4)
 
+cv2.namedWindow('Input image')
 cv2.createTrackbar('Threshold', 'Input image', 0, 255, callback)
 
 while True:
